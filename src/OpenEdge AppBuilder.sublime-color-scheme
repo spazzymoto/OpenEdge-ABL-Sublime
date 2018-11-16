@@ -1,0 +1,37 @@
+{
+    "name": "OpenEdge AppBuilder",
+    "globals":
+    {
+        "background": "white",
+        "foreground": "black",
+        "caret": "rgb(192, 192, 192)",
+        "selection": "black",
+        "selection_foreground": "white",
+        "find_highlight": "black",
+        "find_highlight_foreground": "white"
+    },
+    "rules":
+    [
+        {
+            "name": "Keyword",
+            "scope": "keyword.other",
+            "foreground": "rgb(0, 0, 255)"
+        },
+        {
+            "name": "Comment Line",
+            "scope": "comment.line",
+            "foreground": "rgb(0, 128, 0)"
+        },
+        {
+            "name": "Comment Block",
+            "scope": "comment.block",
+            "foreground": "rgb(0, 128, 0)"
+        },
+        {
+            "name": "Number",
+            "scope": "constant.numeric",
+            "foreground": "#7F00FF",
+            "font_style": "italic",
+        }
+    ]
+}

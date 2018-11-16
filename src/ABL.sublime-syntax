@@ -1,0 +1,95 @@
+%YAML 1.2
+---
+name: OpenEdge ABL
+file_extensions: [p, i, cls, w]
+scope: source.abl
+
+contexts:
+  main:
+    # Keywords
+    - match: (?i)(?<![a-zA-Z&_])(REPLACE-KEYWORD-REGEX)(?![a-zA-Z0-9-])
+      scope: keyword.other.abl
+
+    # Punctuation
+    - match: ([^a-zA-Z0-9_\x{0022}\x{0027}\x{002f}\*x{007b}\x{007d}])
+      scope: punctuation.separator.abl
+
+    # Literals
+    - match: ([a-zA-Z0-9_])
+      scope: variable.other.abl
+
+    # Single Line Comment
+    - match: (//.*)
+      scope: comment.line.abl
+
+    # Block Comment
+    - match: (/\*)
+      scope: comment.block.abl
+      push: 
+        - match: (\*/)
+          pop: true
+          scope: comment.block.abl
+        - match: (/\*)
+          scope: comment.block.abl
+          push: 
+            - match: (\*/)
+              pop: true
+              scope: comment.block.abl
+            - match: (/\*)
+              scope: comment.block.abl
+              push: 
+                - match: (\*/)
+                  pop: true
+                  scope: comment.block.abl
+                - match: (.)
+                  scope: comment.block.abl
+            - match: (.)
+              scope: comment.block.abl
+        - match: (.)
+          scope: comment.block.abl
+
+    # Double Quoted String
+    - match: (")
+      scope: string.quoted.double.abl
+      push: 
+        - match: (?<!~)(")
+          pop: true
+          scope: string.quoted.double.abl
+        - match: (.)
+          scope: string.quoted.double.abl
+
+    # Single Quote String
+    - match: (')
+      scope: string.quoted.single.abl
+      push: 
+        - match: (?<!~)(')
+          pop: true
+          scope: string.quoted.single.abl
+        - match: (.)
+          scope: string.quoted.single.abl
+
+    # Preprocessor
+    - match: ({)
+      scope: meta.preprocessor.abl
+      push: 
+        - match: (})
+          pop: true
+          scope: meta.preprocessor.abl
+        - match: ({)
+          scope: meta.preprocessor.abl
+          push: 
+            - match: (})
+              pop: true
+              scope: meta.preprocessor.abl
+            - match: ({)
+              scope: meta.preprocessor.abl
+              push: 
+                - match: (})
+                  pop: true
+                  scope: meta.preprocessor.abl
+                - match: (.)
+                  scope: meta.preprocessor.abl
+            - match: (.)
+              scope: meta.preprocessor.abl
+        - match: (.)
+          scope: meta.preprocessor.abl
