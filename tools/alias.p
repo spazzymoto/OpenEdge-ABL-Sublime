@@ -39,7 +39,10 @@ REPEAT:
   IF cTabTrigger <> cPreviousTabTrigger 
   THEN
   DO:
-    cAliasFile = SUBSTITUTE(cTemplate, REPLACE(cContent, "%\c":U, "$~{1~}":U), LC(cTabTrigger)).
+    cContent = REPLACE(cContent, "%~\c":U, "$~{1~}":U).
+    cContent = REPLACE(cContent, "%~\i":U, "":U).
+    cContent = REPLACE(cContent, "%~\d":U, "":U).
+    cAliasFile = SUBSTITUTE(cTemplate, cContent, LC(cTabTrigger)).
     COPY-LOB FROM cAliasFile TO FILE (cBuildDirectory + LC(cTabTrigger) + ".sublime-snippet").
     cPreviousTabTrigger = cTabTrigger.
   END.

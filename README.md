@@ -4,16 +4,9 @@ Inspired By [GabSoftware](http://www.gabsoftware.com/)
 
 ## Building
 
-1. Run /build.sh in the root directory
-
-## Maintaining OpenEdge Keywords
-
-1. Edit the tools/keywords.csv file
-   * This is a space seperated file, the first entry is the full keyword and the second is the shortest allowed abbreviation
-   * These were originally extracted from [OpenEdge Documentation](https://documentation.progress.com/output/ua/OpenEdge_latest/index.html#page/dvref%2Fkeyword-index.html%23)
-   * Some keywords were missing so do a manual merge
-2. Place keywords.csv and keywords.p in the SESSION:TEMP-DIRECTORY or modify keywords
-
+  - Linux: Run /build.sh in the root directory
+  - Windows: Open to pull request for bat file :)
+  
 ## Installing or modifying
 
 1. Close Sublime Text if necessary
